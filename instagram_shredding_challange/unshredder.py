@@ -5,7 +5,7 @@ Author: Renan Cakirerk <public [at] cakirerk.org>
 Usage: ./unshredder.py img.png
 """
 
-from PIL import Image, ImageFilter
+from PIL import Image
 import math
 import sys
 
