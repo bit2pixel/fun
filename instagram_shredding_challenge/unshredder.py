@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 """
 Author: Renan Cakirerk <public [at] cakirerk.org>
 Usage: ./unshredder.py img.png
