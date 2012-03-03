@@ -1,0 +1,39 @@
+Repair Roads (150 Points)
+The country of Byteland contains of N cities and N - 1 bidirectional roads between them such that there is a path between any two cities. The roads in Byteland were built long ago and now they are in need of repair. You have been hired to repair all the roads. You intend to do this by dispatching robots on some of the roads. Each robot will repair the road he is currently on and then move to one of the adjacent unrepaired roads. After repairing that, he will move to another adjacent unrepaired road, repair that and so on.
+Two roads are adjacent if they have the same city at one of their endpoints. For the process to be efficient, no two robots will can ever repair the same road, and no road can be visited twice. What is the least number of robots needed to accomplish the task?
+Input:
+The first line contains the number of test cases T. T test cases follow. The first line of each testcase contains N, the number of cities in Byteland. The cities are numbered 0..N - 1. The following N - 1 lines contain the description of the roads. The ith line contains two integers ai and bi, meaning that there is a road connecting cities with numbers ai and bi.
+Output:
+Output T lines, one corresponding to each test case containing the required answer for that test case.
+Constraints:
+1 <= T <= 20
+1 <= N <= 10000
+0 <= ai,bi < N
+
+Sample Input:
+3
+4
+0 1
+0 2
+0 3
+6
+0 1
+1 2
+2 3
+2 4
+4 5
+7
+0 1
+1 2
+2 3
+2 4
+4 5
+3 6
+Sample Output:
+1
+1
+2
+Explanation:
+For the first case, one robot is enough to repair all roads: (0,1) -> (0,2) -> (0,3)
+For the second case, one robot is again enough: (0,1) -> (1,2) -> (2,3) -> (2,4) -> (4,5)
+The the third case, there is no way to repair all the roads with one robot and at least two are needed.
