@@ -14,8 +14,14 @@ def say(message, prefix = '  ', suffix = ' -> '):
         sys.stdout.write("%s%s%s" % (prefix, message, suffix))
 
 def get_number_of_test_cases():
-    say('How many test cases will you enter?', prefix = '\n')
-    return int(get_input())
+    while True:
+        say('How many test cases will you enter?', prefix = '\n')
+        num = int(get_input())
+
+        if num <= 20:
+            return num
+
+        print '\n  Error: Maximum 20 test cases are allowed at a time. Try again.\n'
 
 class Byteland:
     def __init__(self):
@@ -33,8 +39,14 @@ class Byteland:
         self.calculate_required_no_of_robots()
 
     def get_no_of_cities(self):
-        say('Enter the number of cities', suffix=' -> ')
-        return int(get_input())
+        while True:
+            say('Enter the number of cities')
+            num = int(get_input())
+
+            if num >= 1 and num <= 10000: # might use range(1, 10001) but this is faster
+                return num
+
+            print '\n  Error: Maximum 10000 cities are allowed in a test case. Try again.\n'
 
     def get_connection(self):
         while True:
@@ -49,9 +61,9 @@ class Byteland:
                 to_city = int(connections[1])
 
                 # Inputs cannot exceed the number of cities
-                if from_city in range(self.no_of_cities) and to_city in range(self.no_of_cities):
-
-                    return [from_city, to_city]
+                if from_city < self.no_of_cities and to_city < self.no_of_cities:
+                    if from_city >= 0 and to_city >= 0:
+                        return [from_city, to_city]
 
             print '\n  Error: Inputs cannot exceed the number of cities. City numbers start from zero. Try again.\n'
 
@@ -66,6 +78,7 @@ class Byteland:
         say("Connection created from city %s to city %s." % (from_city, to_city), prefix='  ', suffix='  \n\n')
 
     def calculate_required_no_of_robots(self):
+
         return self.no_of_required_robots
 
 
@@ -75,10 +88,10 @@ if __name__ == '__main__':
     test_cases = []
 
     for t in range(no_of_tests):
-        say("Test Case %s" % str(t + 1), prefix='\n=== ', suffix=' ===\n')
+        say("Test Case %s" % str(t + 1), prefix='\n\n=== ', suffix=' ===\n\n')
         test_cases.append(Byteland())
 
-    say('Required number of robots for test cases', prefix='\n== ', suffix=' ==\n\n')
+    say('Required number of robots for test cases', prefix='\n=== ', suffix=' ===\n\n')
     for tc_list_item in list(enumerate(test_cases)):
         test_case_number = tc_list_item[0]
         test_case = tc_list_item[1]
